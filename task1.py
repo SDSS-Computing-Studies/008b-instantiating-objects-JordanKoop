@@ -73,63 +73,56 @@ Buster dog
 Shih-tzu is owned by Christy
 (10 points) 
 """
-class pet:
-    type_pet = None
-    breed = None
-    name = None
-    owner = None
-    birth_date = None
 
-    def __init__(self, type_pet, breed, name, owner, birth_date):
-        self.type_pet = type_pet
-        self.breed =breed
-        self.name = name
-        self.owner = owner
-        self.birth_date = birth_date
 
+
+class animal:
+
+    typ=None
+    breed=None
+    name=None
+    owner=None
+    birthdate=None
+
+    def __init__(self):
+        self.typ=input("Enter the Type of animal: ")
+        self.breed=input("Enter the breed of animal: ")
+        self.name=input('Enter the name of the animal: ' )
+        self.owner=input('Enter the name of the owner: ')
+        self.birthdate=(input('Enter the birthdate: '))
+    
     def display(self):
-        print(self.name + " " + self.type_pet)
-        print(self.breed + "  is owned by " + self.owner)
-
-
-def display_menu():
-    print("1. Enter a new pet")
-    print("2. Retrieve a pet")
-    print("3. Exit")
-
-def register_new_pet():
-    print("Type of animal?", end=" ")
-    type_pet = input()
-    print("Breed?", end=" ")
-    breed = input()
-    print("Name?", end=" ")
-    name = input()
-    print("Owner?", end=" ")
-    owner = input()
-    print("Birthdate?", end=" ") 
-    birth_date = input()
-    p = pet(type_pet, breed, name, owner, birth_date)
-    return p
-
-def retrieve_pet(pet_list):
-    print("Which Pet?", end=" ")
-    name = input()
-    for p in pet_list:
-        if p.name == name:
-            p.display()
-
+        print(self.name)
+        print(self.typ)
+        print(self.breed)
+        print(self.owner)
+    
 def main():
-    pet_list = []
+    animals=[]
+    num = 0
     while True:
-        display_menu()
-        option = input()
-        print()
-        if option == "3":
+        print("Please select one of the following options: ")
+        print("1: Enter a new pet")
+        print('2: Retrieve a pet')
+        print('3: Exit')
+        num=int(input())
+        if num == 1:
+            animals.append(animal())
+        if num == 2:
+            ind=input('Enter the name of the animal: ')
+            length=len(animals)
+            for i in range(0,length):
+                name=animals[i].name
+                 
+                if name==ind:
+                    animals[i].display()
+                
+            # cycles through all members of the list to search for a name match and then get the idnex from that
+
+            
+        if num == 3:
+            print('Thank you for using this program.')
             break
-        elif option == "2": 
-            retrieve_pet(pet_list)
-        elif option == "1": 
-            pet_list.append(register_new_pet()) 
+            
 
-
-#main()
+main()
